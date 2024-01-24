@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rainy Screen Saver</title>
+    <style>
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+
+        .line {
+            position: absolute;
+            width: 1px;
+            height: 100vh;
+            background-color: transparent;
+        }
+
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background-color: white;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function createLines() {
+            for (let i = 0; i < 100; i++) {
+                const line = document.createElement('div');
+                line.classList.add('line');
+                line.style.left = Math.random() * window.innerWidth + 'px';
+                document.body.appendChild(line);
+            }
+        }
+
+        function createRain() {
+            for (let i = 0; i < 500; i++) {
+                const raindrop = document.createElement('div');
+                raindrop.classList.add('raindrop');
+                raindrop.style.left = Math.random() * window.innerWidth + 'px';
+                raindrop.style.animationDuration = Math.random() * 5 + 2 + 's';
+                raindrop.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(raindrop);
+            }
+        }
+
+        createLines();
+        createRain();
+    </script>
+</body>
+</html>
+
+<audio src="ambient-wave-48-tribute-17243.mp3" loop autoplay></audio>
+<audio src="light-rain-109591.mp3" loop autoplay></audio>
+
